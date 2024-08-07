@@ -1,0 +1,16 @@
+.app-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .left-panel {
+    width: 200px;
+    border-right: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .canvas-container {
+    flex: 1;
+    position: relative;
+  }
+  
