@@ -41,11 +41,31 @@ const CanvasBoard: React.FC = () => {
     });
   };
 
+  const downloadCanvasAsImage = () => {
+    if (!canvasRef.current || canvasRef.current.isEmpty()) {
+      alert('Canvas is empty. Please add some images before downloading.');
+      return;
+    }
+
+    const dataURL = canvasRef.current.toDataURL({
+      format: 'png',
+      quality: 1.0,
+    });
+
+    const link = document.createElement('a');
+    link.href = dataURL;
+    link.download = 'canvas-image.png';
+    link.click();
+  };
+
   return (
     <div ref={drop} className="canvas-container" style={{ border: isOver ? '2px solid green' : 'none' }}>
       <canvas id="canvas" />
+      <button onClick={downloadCanvasAsImage} style={{ marginTop: '10px' }}>
+        Download Canvas as Image
+      </button>
     </div>
   );
-}
+};
 
 export default CanvasBoard;
